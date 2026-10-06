@@ -2,4 +2,4 @@ module github.com/MeYo0o/greenlight
 
 go 1.27.1
 
-require github.com/go-chi/chi/v5 v5.3.2
+require github.com/julienschmidt/httprouter v1.3.0

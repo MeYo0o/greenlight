@@ -7,8 +7,6 @@ import (
 	"net/http"
 	"os"
 	"time"
-
-	"github.com/go-chi/chi/v5"
 )
 
 const version = "1.0.0"
@@ -38,12 +36,9 @@ func main() {
 		logger: logger,
 	}
 
-	r := chi.NewRouter()
-	r.HandleFunc("/v1/healthcheck", app.healthcheckHandler)
-
 	srv := &http.Server{
 		Addr:         fmt.Sprintf(":%d", cfg.port),
-		Handler:      r,
+		Handler:      app.routes(),
 		IdleTimeout:  1 * time.Minute,
 		ReadTimeout:  5 * time.Second,
 		WriteTimeout: 10 * time.Second,
